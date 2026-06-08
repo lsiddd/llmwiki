@@ -1,6 +1,6 @@
 # LMWiki Skill
 
-Skill para Codex que cria e opera uma **LLM Wiki**: uma base de conhecimento em markdown mantida por agente, cumulativa, interligada e rastreável. A ideia é transformar fontes brutas em páginas persistentes de wiki, em vez de redescobrir conhecimento do zero a cada pergunta.
+Skill para agentes que leem `SKILL.md`, incluindo **Codex** e **Claude Code**. Ela cria e opera uma **LLM Wiki**: uma base de conhecimento em markdown mantida por agente, cumulativa, interligada e rastreável. A ideia é transformar fontes brutas em páginas persistentes de wiki, em vez de redescobrir conhecimento do zero a cada pergunta.
 
 ## O Que Ela Faz
 
@@ -19,21 +19,39 @@ Skill para Codex que cria e opera uma **LLM Wiki**: uma base de conhecimento em 
 │   ├── SKILL.md
 │   ├── agents/openai.yaml
 │   └── references/
-├── lmwiki.skill            # pacote pronto para instalar
+├── lmwiki.skill            # pacote zip pronto para instalar
 ├── docs/llm-wiki.md        # nota conceitual original
 └── scripts/package.sh      # recria lmwiki.skill a partir de lmwiki/
 ```
 
-## Instalação Local
+## Instalação
 
-A partir deste repositório:
+### Codex
+
+Instale a skill em `~/.codex/skills/lmwiki`:
 
 ```bash
 rm -rf ~/.codex/skills/lmwiki
 unzip -q lmwiki.skill -d ~/.codex/skills
 ```
 
-Reinicie o Codex depois da instalação para ele carregar a skill.
+Reinicie o Codex depois da instalação.
+
+### Claude Code
+
+Instale a mesma pasta da skill em `~/.claude/skills/lmwiki`:
+
+```bash
+rm -rf ~/.claude/skills/lmwiki
+mkdir -p ~/.claude/skills
+cp -a lmwiki ~/.claude/skills/lmwiki
+```
+
+Reinicie o Claude Code depois da instalação. Em projetos específicos, você também pode copiar `lmwiki/` para uma pasta de skills do próprio projeto, se esse for o padrão configurado no seu ambiente.
+
+### Outros Agentes
+
+Use `lmwiki/SKILL.md` como arquivo principal da skill e mantenha a pasta `lmwiki/references/` ao lado dele. A skill foi escrita de forma neutra: o esquema local da wiki pode ser `AGENTS.md`, `CLAUDE.md`, `WIKI.md` ou `schema.md`.
 
 ## Recriar O Pacote
 
@@ -44,9 +62,3 @@ scripts/package.sh
 ```
 
 O script escreve `lmwiki.skill` na raiz do repositório e valida o zip.
-
-## Publicação
-
-- Mantenha `lmwiki/` como fonte de verdade da skill.
-- Mantenha `lmwiki.skill` versionado se quiser permitir download direto do artefato empacotado.
-- Adicione um `LICENSE` antes de distribuição pública se quiser definir explicitamente permissões de reutilização.
