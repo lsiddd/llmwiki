@@ -1,0 +1,29 @@
+# Local agent/session settings
+/.agents/
+/.claude/
+/.codex/
+
+# Temporary files
+/tmp/
+*.tmp
+*.bak
+*.log
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Python/cache noise from local tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# LaTeX/PDF build noise if examples are generated locally
+*.aux
+*.fdb_latexmk
+*.fls
+*.out
+*.toc
+*.synctex.gz
