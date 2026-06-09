@@ -11,7 +11,7 @@ if [[ ! -f "lmwiki/SKILL.md" ]]; then
 fi
 
 rm -f lmwiki.skill
-zip -qr lmwiki.skill lmwiki
+zip -qr lmwiki.skill lmwiki -x '*/__pycache__/*' '*.pyc'
 unzip -t lmwiki.skill >/dev/null
 
 echo "Built lmwiki.skill"
