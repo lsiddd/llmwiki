@@ -12,6 +12,7 @@ Não pule essa conversa — a estrutura certa depende inteiramente das respostas
 6. **Qual agente vai operar a wiki na maior parte do tempo?** Use `AGENTS.md` para Codex, `CLAUDE.md` para Claude Code, ou outro nome se o usuário preferir. O importante é que o arquivo escolhido seja fácil de encontrar em sessões futuras.
 7. **A wiki pode usar pesquisa web para enriquecer contexto?** Se sim, defina fontes preferidas, fontes proibidas, critérios de confiabilidade, nível de atualidade necessário e se resultados web precisam de aprovação antes de entrar na wiki.
 8. **Quais saídas geradas o usuário quer?** Site HTML navegável, projeto TeX/PDF, ambos ou nenhum por enquanto. Pergunte também se a exportação deve incluir fontes processadas, apenas sínteses/conceitos, ou a wiki inteira.
+9. **Qual profundidade é esperada?** O padrão da skill é wiki explicativa profunda. Pergunte se algum tipo de página pode ser mais conciso, mas nunca assuma que listas de links ou resumos de abstract bastam.
 
 ## Estrutura de diretórios sugerida (ponto de partida, não dogma)
 
@@ -86,6 +87,13 @@ updated: AAAA-MM-DD
 ## Fluxo de lint
 [com que frequência rodar, o que esse domínio em particular tende a degradar — contradições entre fontes? páginas órfãs? dados que ficam desatualizados rápido?]
 
+## Contrato de profundidade
+- Páginas completas explicam definição, mecanismo, variantes, evidências/métricas, limitações, relações e lacunas quando aplicável.
+- Páginas de conceito comparam a contribuição específica das fontes; não apenas listam links.
+- Páginas de fonte refletem o corpo completo, não apenas o abstract.
+- Páginas que não cumprem o contrato ficam como `stub` ou `needs-review`.
+- Lint determinístico: `python <skill>/scripts/lint_depth.py <raiz-da-wiki>`.
+
 ## Fluxo de export
 - Saídas desejadas: [html, tex_pdf]
 - Escopo: [wiki inteira, apenas sínteses/conceitos, excluir fontes processadas etc.]
@@ -109,4 +117,4 @@ Ver `conventions.md` para os templates desses dois arquivos.
 
 ## Ao final do bootstrap
 
-Confirme com o usuário que a estrutura faz sentido antes de criar os arquivos. Depois de criá-los, ofereça um resumo do que foi montado e do que esperar das próximas sessões — por exemplo, "da próxima vez que você trouxer um artigo, eu vou seguir o fluxo de ingest descrito no esquema: preservar a fonte em raw, ler, conversar sobre os pontos-chave, atualizar as páginas afetadas e registrar no log". Isso ajuda o usuário a calibrar expectativas e a saber o que pedir.
+Confirme com o usuário que a estrutura faz sentido antes de criar os arquivos. Depois de criá-los, ofereça um resumo do que foi montado e do que esperar das próximas sessões — por exemplo, "da próxima vez que você trouxer um artigo, eu vou preservar a fonte, ler o corpo completo, capturar mecanismos/evidências/limitações, atualizar conceitos explicando a contribuição da fonte e rodar o lint de profundidade". Isso ajuda o usuário a calibrar expectativas e a saber o que pedir.

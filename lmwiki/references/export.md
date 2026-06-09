@@ -17,6 +17,7 @@ Use este modo quando o usuário pedir para visualizar a wiki no navegador, gerar
 3. Determine a ordem: a ordem explícita do esquema, a ordem do `index.md`, ou uma ordem proposta por categoria.
 4. Determine o formato: `html`, `tex`, `pdf`, ou combinação.
 5. Verifique ferramentas disponíveis quando for compilar: prefira `latexmk -pdf`, depois `tectonic`, depois `pdflatex`. Se nenhuma existir, gere apenas o projeto TeX e diga que não compilou.
+6. Antes de uma exportação apresentada como "completa", rode o lint estrutural e, quando disponível, `scripts/lint_depth.py <raiz-da-wiki>`. Exportar páginas rasas não as torna completas; corrija ou marque a limitação.
 
 ## HTML
 

@@ -27,6 +27,7 @@ Use este modo quando o usuário pedir para pesquisar na web, enriquecer contexto
 5. **Decidir integração**: indique quais fontes devem virar ingest, quais só informam contexto e quais foram descartadas.
 6. **Preservar fontes aceitas**: quando viável, salve snapshot, markdown, bibliografia ou nota de fonte em `raw/`.
 7. **Atualizar wiki**: se o usuário aprovar ou se o esquema permitir, atualize páginas afetadas, crie páginas de fonte, ajuste `index.md` e registre `log.md`.
+8. **Integrar com profundidade**: não despeje uma lista de links numa página. Explique o que cada fonte muda no entendimento, qual mecanismo/evidência oferece, como se relaciona com fontes existentes e quais incertezas permanecem. Aplique `depth.md`.
 
 ## Formato de achados
 

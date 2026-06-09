@@ -38,6 +38,21 @@ Antes de escolher Bootstrap, Ingest, Query, Research, Lint ou Export:
 3. Se existirem `index.md` e `log.md`, leia `index.md` e as entradas recentes de `log.md` para entender a estrutura e o histórico recente.
 4. Se a wiki estiver em um repositório git, verifique o estado do trabalho antes de editar. Não reverta alterações existentes sem pedido explícito do usuário.
 5. Identifique o modo de operação e diga ao usuário, em uma frase curta, o que vai fazer. Se a intenção estiver ambígua, pergunte.
+6. Leia `references/depth.md` antes de criar, ingerir em lote, revisar profundamente ou marcar páginas como completas. A profundidade é parte da correção da wiki, não um acabamento opcional.
+
+## Contrato de profundidade
+
+Uma LMWiki não é um índice comentado nem uma coleção de abstracts. Ela deve explicar conhecimento suficiente para que o leitor consiga:
+
+- entender **o que é**, **como funciona** e **por que funciona**;
+- distinguir variantes, arquiteturas e posições das fontes;
+- avaliar evidências, métricas, hipóteses e limitações;
+- seguir relações causais e dependências entre conceitos;
+- identificar divergências, lacunas e perguntas ainda abertas.
+
+Uma página que contém apenas definição curta, lista de fontes e três tensões genéricas continua sendo `stub` ou `needs-review`; nunca marque como `stable`/`completo`. Uma lista de links não substitui explicar a contribuição específica de cada fonte.
+
+Use `references/depth.md` como contrato por tipo de página e execute `scripts/lint_depth.py <raiz-da-wiki>` quando disponível antes de concluir bootstrap com conteúdo, ingest em lote, revisão geral ou exportação completa.
 
 ## Como decidir o modo
 
@@ -73,8 +88,10 @@ Leia `references/operations.md` para o roteiro detalhado. Princípios que guiam 
 - **Processe uma fonte de cada vez**, salvo pedido explícito do usuário para processar em lote. Isso preserva o envolvimento dele: ele lê os resumos, confere as atualizações, orienta o que merece destaque. Processar em lote é possível, mas reduz a supervisão e deve ser escolha consciente do usuário, não um atalho seu.
 - **Preserve a fonte bruta antes de sintetizar**: se o usuário trouxer link, arquivo ou texto colado, mantenha uma cópia/snapshot em `raw/` sempre que for viável. A página de fonte em `wiki/` deve apontar para esse item em `raw/`.
 - **Uma fonte pode tocar de dez a quinze páginas**: resumo da fonte, páginas de entidades e conceitos relacionados, índice, log. Não hesite em tocar muitos arquivos — essa é justamente a vantagem de delegar a manutenção a um agente que não se cansa de atualizar referências cruzadas.
+- **Leia o corpo inteiro e preserve sua estrutura intelectual**: abstracts orientam, mas não bastam. Capture mecanismos, taxonomias, arquitetura, método, evidência, métricas, hipóteses, resultados, limitações e agenda futura presentes nas seções substantivas.
 - **Discuta com o usuário antes de escrever**: o que essa fonte traz de novo, o que ela confirma, o que ela contradiz. Essa conversa não é burocracia — é o que decide o que vale a pena registrar e como.
 - **Mantenha rastreabilidade**: afirmações substantivas em páginas de síntese devem apontar para uma página de fonte ou para a fonte bruta correspondente.
+- **Atualize conceitos explicativamente**: em cada conceito afetado, diga qual problema a fonte observa, qual mecanismo propõe, como difere das demais e o que sustenta ou limita sua conclusão. Não acrescente apenas mais um link em "fontes relacionadas".
 - Ao final, **sempre** atualize `index.md` (cataloga a página nova ou revisada) e acrescente uma entrada em `log.md` (registra o que aconteceu).
 
 ## Modo 3: Query (consultar a wiki)
@@ -85,6 +102,7 @@ Leia `references/operations.md` para o roteiro detalhado. Princípios:
 - **Sintetize com citações**: aponte para as páginas da wiki e, quando fizer sentido, para as fontes brutas originais que sustentam cada afirmação.
 - **O formato da resposta depende da pergunta, não de hábito**: pode ser uma página markdown, uma tabela comparativa, um deck de slides (Marp), um gráfico, um canvas.
 - **Boas respostas merecem virar páginas da wiki**: uma comparação que o usuário pediu, uma análise, uma conexão descoberta na conversa — tudo isso tem valor de permanência. Ofereça arquivar de volta na wiki o que for valioso, em vez de deixar se perder no histórico do chat. É assim que as explorações do usuário também se acumulam, e não só as fontes ingeridas.
+- Ao arquivar, aplique o mesmo contrato de profundidade: a página deve preservar raciocínio, evidências, alternativas, limites e relações, não apenas a resposta final.
 
 ## Modo 4: Research (pesquisar e enriquecer contexto)
 
@@ -107,8 +125,11 @@ Leia `references/operations.md` para o roteiro completo. O que procurar:
 - Conceitos importantes mencionados repetidamente, mas sem página própria
 - Referências cruzadas óbvias que faltam
 - Lacunas de dados que uma busca na web poderia preencher
+- Páginas superficialmente completas: definições curtas, listas de links sem comparação, resumo restrito ao abstract, tensões genéricas reutilizadas e ausência de mecanismo/evidência/limitações
 
 Ao final de um lint, não apenas relate: sugira ao usuário novas perguntas a investigar e novas fontes a procurar. Aplique correções de baixo risco (criar um link, criar um stub de página) com aprovação simples do usuário, e deixe para discussão as decisões que envolvem julgamento de síntese.
+
+Quando houver `scripts/lint_depth.py`, rode-o. Trate falhas de profundidade como problemas reais: aprofunde a página ou rebaixe seu `status` para `stub`/`needs-review`.
 
 ## Modo 6: Export (gerar HTML, TeX ou PDF)
 

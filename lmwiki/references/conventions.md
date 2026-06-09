@@ -16,6 +16,64 @@ updated: AAAA-MM-DD
 
 Para páginas de fonte, `sources` normalmente aponta para a fonte bruta preservada em `raw/`. Para sínteses, `sources` pode apontar para páginas de fonte, arquivos brutos, ou ambos. Afirmações substantivas em sínteses devem ser rastreáveis.
 
+## Templates de profundidade
+
+Use estes esqueletos como checklist, adaptando nomes ao domínio. Não crie seções vazias nem force conteúdo irrelevante.
+
+### Página de fonte
+
+```markdown
+# [Título]
+
+## Metadados e fonte bruta
+## Pergunta/problema central
+## Tese e abordagem
+## Arquitetura, mecanismo ou método
+## Taxonomia/variantes (quando houver)
+## Evidências, métricas e resultados
+## Hipóteses e limitações
+## Relação com outras fontes
+## Contribuição para conceitos e sínteses
+## Questões abertas
+```
+
+### Página de conceito
+
+```markdown
+# [Conceito]
+
+## Definição operacional e fronteiras
+## Por que importa
+## Componentes e como funciona
+## Taxonomia/variantes
+## Decisões de projeto e trade-offs
+## Métricas e avaliação
+## Falhas, riscos e limitações
+## Como aparece na coleção
+### [Fonte A]
+- Problema observado:
+- Contribuição/mecanismo/evidência:
+- Relação com as demais:
+## Lacunas e questões abertas
+```
+
+### Página de síntese
+
+```markdown
+# [Síntese]
+
+## Tese/modelo mental
+## Dimensões de comparação
+## Convergências
+## Divergências e contradições
+## Mecanismos e consequências
+## Evidência versus inferência da wiki
+## Lacunas
+## Perguntas ou experimentos sugeridos
+```
+
+Uma lista de links sem relação explicada é válida no `index.md`, mas não constitui uma página de conceito ou síntese completa.
+
 ## Pesquisa web
 
 Pesquisa web é uma etapa auxiliar. Ela pode produzir achados, candidatos a fonte e contexto, mas não substitui ingestão curada.
