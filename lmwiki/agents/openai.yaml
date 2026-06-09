@@ -1,7 +1,7 @@
 interface:
   display_name: "LMWiki"
-  short_description: "Build and maintain markdown knowledge wikis"
-  default_prompt: "Use $lmwiki to create, ingest, query, research, lint, or export my markdown knowledge wiki."
+  short_description: "Build deep, interlinked markdown knowledge wikis"
+  default_prompt: "Use $lmwiki to create, ingest, query, research, lint, or export my markdown knowledge wiki with explanatory depth, source-to-source comparison, and traceable claims."
 
 policy:
   allow_implicit_invocation: true

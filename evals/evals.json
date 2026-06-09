@@ -1,0 +1,23 @@
+{
+  "skill_name": "lmwiki",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Crie uma wiki completa e profunda a partir destes 8 papers técnicos. Quero páginas por fonte, conceitos e sínteses em Markdown.",
+      "expected_output": "A wiki lê o corpo completo, cria páginas explicativas com mecanismos, evidências, limitações e relações fonte a fonte, e não apenas abstracts ou listas de links.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Ingira este novo survey na minha wiki e atualize as páginas conceituais relacionadas.",
+      "expected_output": "A página de fonte preserva taxonomias e estrutura intelectual; páginas conceituais explicam a contribuição e divergências da nova fonte.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Faça um lint geral desta wiki e corrija páginas rasas.",
+      "expected_output": "O lint identifica páginas completas que são apenas definições curtas/listas de links, aplica o contrato de profundidade e roda o lint_depth.py quando disponível.",
+      "files": []
+    }
+  ]
+}

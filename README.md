@@ -9,6 +9,7 @@ Skill para agentes que leem `SKILL.md`, incluindo **Codex** e **Claude Code**. E
 - **Query**: responde perguntas contra a wiki com citações e pode arquivar respostas duráveis.
 - **Research**: pesquisa na web para enriquecer contexto e encontrar fontes candidatas sem poluir a wiki automaticamente.
 - **Lint**: encontra contradições, afirmações antigas, páginas órfãs, links faltando e lacunas.
+- **Depth lint**: rejeita páginas superficialmente "completas" e exige mecanismo, evidência, limitações e relações explicadas.
 - **Export**: gera site HTML navegável ou projeto TeX/PDF com referências internas.
 
 ## Estrutura Do Repositório
@@ -18,7 +19,9 @@ Skill para agentes que leem `SKILL.md`, incluindo **Codex** e **Claude Code**. E
 ├── lmwiki/                 # fonte editável da skill
 │   ├── SKILL.md
 │   ├── agents/openai.yaml
-│   └── references/
+│   ├── references/
+│   └── scripts/lint_depth.py
+├── evals/evals.json        # prompts para avaliar qualidade da skill
 ├── lmwiki.skill            # pacote zip pronto para instalar
 ├── docs/llm-wiki.md        # nota conceitual original
 └── scripts/package.sh      # recria lmwiki.skill a partir de lmwiki/
@@ -62,3 +65,15 @@ scripts/package.sh
 ```
 
 O script escreve `lmwiki.skill` na raiz do repositório e valida o zip.
+
+## Padrão De Profundidade
+
+A skill trata profundidade como parte da correção da wiki. Uma página de conceito não pode ser apenas definição + links; ela deve explicar mecanismos, variantes, métricas, limitações e a contribuição específica das fontes. Páginas de fonte devem refletir o corpo completo, não apenas o abstract.
+
+Para fazer uma triagem determinística:
+
+```bash
+python lmwiki/scripts/lint_depth.py /caminho/para/wiki
+```
+
+O lint usa heurísticas e não substitui revisão editorial, mas impede que páginas obviamente rasas sejam silenciosamente tratadas como completas.
